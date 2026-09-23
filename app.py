@@ -14,7 +14,11 @@ st.set_page_config(
     page_title="Anthony IA", page_icon="🤖", layout="wide"
 )
 
-client = genai.Client()
+import os
+import streamlit as st
+
+api_key = st.secrets.get("GOOGLE_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+client = genai.Client(api_key=api_key)
 MODEL_NAME = "gemini-3.6-flash"  # Modèle rapide et multimodal
 
 # ------------------------------------------------------------------------------
