@@ -5,6 +5,7 @@ import uuid
 from google import genai
 from google.genai import types
 import pandas as pd
+import sys
 import streamlit as st
 # ------------------------------------------------------------------------------
 # 1. CONFIGURATION DE LA PAGE & NOM DE L'IA
@@ -218,7 +219,7 @@ with tab_aider:
 
       if st.button("🚀 Exécuter Aider"):
         if instruction:
-            cmd = f'python3 -m aider --message "{instruction}" --yes-always {file_target}'
+            cmd = f'{sys.executable} -m aider --message "{instruction}" --yes-always {file_target}'
             st.info(f"Commande exécutée : `{cmd}`")
             with st.spinner("Aider modifie le code..."):
                 result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
