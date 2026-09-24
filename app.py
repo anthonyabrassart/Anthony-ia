@@ -210,25 +210,24 @@ with tab_aider:
         horizontal=True,
     )
 
-    if mode == "🤖 Consigne Aider (Codage)":
-        instruction = st.text_area(
-            "Consigne pour l'agent Aider :",
-            placeholder="Ex : Ajoute un bouton d'export du chat en texte...",
-        )
-        file_target = st.text_input("Fichier cible :", value="app.py")
+   if mode == "🤖 Consigne Aider (Codage)":
+    instruction = st.text_area(
+        "Consigne pour l'agent Aider :",
+        placeholder="Ex : Ajout d'un bouton d'export du chat en texte...",
+    )
+    file_target = st.text_input("Fichier cible :", value="app.py")
 
-        if st.button("🚀 Exécuter Aider"):
-            if instruction:
-               cmd = f'python3 -m aider --message "{instruction}" --yes-always {file_target}'
-               st.info(f"Commande exécutée : `{cmd}`")
-                with st.spinner("Aider modifie le code..."):
-                    res = subprocess.run(
-                        cmd, shell=True, capture_output=True, text=True
-                    )
-                    st.subheader("Retour d'Aider :")
-                    st.code(res.stdout if res.stdout else res.stderr)
-            else:
-                st.warning("Veuillez saisir une consigne.")
+    if st.button("🚀 Exécuter Aider"):
+        if instruction:
+            cmd = f'python3 -m aider --message "{instruction}" --yes-always {file_target}'
+            st.info(f"Commande exécutée : `{cmd}`")
+            with st.spinner("Aider modifie le code..."):
+                result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+
+            st.subheader("Retour d'Aider :")
+            st.code(result.stdout if result.stdout else result.stderr)
+        else:
+            st.warning("Veuillez saisir une consigne.")
 
     else:
         cmd_text = st.text_input(
