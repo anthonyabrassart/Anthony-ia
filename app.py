@@ -217,7 +217,7 @@ with tab_aider:
 
         if st.button("🚀 Exécuter Aider"):
             if instruction:
-                cmd = f'py -3.12 -m aider --message "{instruction}" --yes-always {file_target}'
+               cmd = f'python3 -m aider --message "{instruction}" --yes-always {file_target}'
                 st.info(f"Commande exécutée : `{cmd}`")
                 with st.spinner("Aider modifie le code..."):
                     res = subprocess.run(
