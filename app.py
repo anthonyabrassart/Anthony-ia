@@ -6,7 +6,7 @@ from google import genai
 from google.genai import types
 import pandas as pd
 import streamlit as st
-
+st.markdown('<meta name="google" content="notranslate">', unsafe_allow_html=True)
 # ------------------------------------------------------------------------------
 # 1. CONFIGURATION DE LA PAGE & NOM DE L'IA
 # ------------------------------------------------------------------------------
