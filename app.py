@@ -209,15 +209,14 @@ with tab_aider:
         ["🤖 Consigne Aider (Codage)", "⚡ Commande Terminal (CMD)"],
         horizontal=True,
     )
-
-   if mode == "🤖 Consigne Aider (Codage)":
-    instruction = st.text_area(
+    if mode == "🤖 Consigne Aider (Codage)":
+      instruction = st.text_area(
         "Consigne pour l'agent Aider :",
         placeholder="Ex : Ajout d'un bouton d'export du chat en texte...",
     )
-    file_target = st.text_input("Fichier cible :", value="app.py")
+      file_target = st.text_input("Fichier cible :", value="app.py")
 
-    if st.button("🚀 Exécuter Aider"):
+      if st.button("🚀 Exécuter Aider"):
         if instruction:
             cmd = f'python3 -m aider --message "{instruction}" --yes-always {file_target}'
             st.info(f"Commande exécutée : `{cmd}`")
@@ -228,7 +227,6 @@ with tab_aider:
             st.code(result.stdout if result.stdout else result.stderr)
         else:
             st.warning("Veuillez saisir une consigne.")
-
     else:
         cmd_text = st.text_input(
             "Commande système à lancer :", placeholder="dir ou py -3.12 --version"
