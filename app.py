@@ -21,7 +21,7 @@ st.markdown('<meta name="google" content="notranslate">', unsafe_allow_html=True
 
 api_key = st.secrets.get("GOOGLE_API_KEY") or os.environ.get("GOOGLE_API_KEY")
 client = genai.Client(api_key=api_key)
-MODEL_NAME = "gemini-2.5-flash"  # Modèle rapide et multimodal
+MODEL_NAME = "gemini-3.6-flash"  # Modèle rapide et multimodal
 
 # ------------------------------------------------------------------------------
 # 2. GESTION DE L'HISTORIQUE DE DISCUSSION
